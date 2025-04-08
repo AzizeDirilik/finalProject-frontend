@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,17 +18,12 @@ import { NaviComponent } from './components/navi/navi.component';
     ProductComponent,
     CategoryComponent,
     NaviComponent,
-    
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideHttpClient(withFetch()),
-    provideClientHydration(withEventReplay())
-    
+    provideClientHydration(withEventReplay()),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
