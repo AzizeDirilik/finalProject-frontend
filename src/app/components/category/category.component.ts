@@ -10,6 +10,7 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
+  currentCategory: Category;
   apiUrl = 'https://localhost:44393/api/categories/getall';
 
   constructor(private categoryService: CategoryService) {}
@@ -25,5 +26,17 @@ export class CategoryComponent implements OnInit {
       this.categories = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  setCurrentCategory(category: Category) {
+    this.currentCategory = category;
+  }
+
+  getCurrentCategoryClass(category: Category) {
+    if (category == this.currentCategory) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
   }
 }

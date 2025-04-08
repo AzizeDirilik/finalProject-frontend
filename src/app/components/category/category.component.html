@@ -6,14 +6,15 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded != false" class="table">
-  <thead>
-    <tr>
-      <td>Id</td>
-      <td>Kategori Adı</td>
-    </tr>
-  </thead>
-  <tr *ngFor="let category of categories">
-    <td>{{ category.categoryName }}</td>
-  </tr>
-</table>
+<ul class="list-group">
+  <li
+    (click)="setCurrentCategory(category)"
+    routerLink="/product/category/{{ category.categoryId }}"
+    *ngFor="let category of categories"
+    [class]="getCurrentCategoryClass(category)"
+  >
+    {{ category.categoryName }}
+  </li>
+</ul>
+
+<h5 *ngIf="currentCategory">{{ currentCategory.categoryName }} sectiniz</h5>
