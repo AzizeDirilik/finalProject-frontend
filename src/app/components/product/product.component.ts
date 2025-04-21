@@ -20,7 +20,7 @@ export class ProductComponent {
 
   products: Product[] = [];
   dataLoaded = false;
-
+  filterText = '';
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['categoryId']) {
