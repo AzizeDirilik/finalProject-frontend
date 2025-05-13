@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +18,8 @@ export class ProductComponent {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private cartService: CartService
   ) {}
 
   products: Product[] = [];
@@ -51,5 +53,6 @@ export class ProductComponent {
 
   addToCart(product: Product) {
     this.toastrService.success('Sepete Eklendi', product.productName);
+    this.cartService.addToCart(product);
   }
 }
